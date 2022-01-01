@@ -44,6 +44,11 @@ async def run_cmd(cmd: str) -> Tuple[str, str, int, int]:
   )
 
 # Start
+@xbot.on_message(filters.command('perintah'))
+async def _start(bot, update):
+  await update.reply_text(f"masih kosong", True, reply_markup=InlineKeyboardMarkup(START_BUTTONS))
+
+# Start
 @xbot.on_message(filters.command('start') & filters.private)
 async def _start(bot, update):
   await update.reply_text(f"Yuk kirim __link tiktoknya__", True, reply_markup=InlineKeyboardMarkup(START_BUTTONS))
