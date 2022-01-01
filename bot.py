@@ -1,5 +1,6 @@
 import json, requests, os, shlex, asyncio, uuid, shutil
 from typing import Tuple
+from bot import dp, bot
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
@@ -57,6 +58,12 @@ async def _tiktok(bot, update):
     return
   await update.reply('Mau download yang mana?', True, reply_markup=InlineKeyboardMarkup(DL_BUTTONS))
 
+    @dp.message_handler()
+async def get_message(message: Message):
+    async for video in TikTok.handle_message(message):
+        if not video: continue
+        await bot.send_video(message.chat.id, video, reply_to_message_id=message.message_id)
+    
 # Callbacks
 @xbot.on_callback_query()
 async def _callbacks(bot, cb: CallbackQuery):
