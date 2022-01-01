@@ -11,7 +11,7 @@ downloads = './downloads/{}/'
 
 #Button
 START_BUTTONS=[
-    [InlineKeyboardButton('Creator', url='https://t.me/tiianptb')],
+    [InlineKeyboardButton('Creator', url='https://t.me/tiianprb')],
 ]
 
 DL_BUTTONS=[
@@ -45,7 +45,7 @@ async def run_cmd(cmd: str) -> Tuple[str, str, int, int]:
 # Start
 @xbot.on_message(filters.command('start') & filters.private)
 async def _start(bot, update):
-  await update.reply_text(f"Halo!\nKamu dapat mengunduh video/audio tiktok menggunakan bot ini", True, reply_markup=InlineKeyboardMarkup(START_BUTTONS))
+  await update.reply_text(f"Yuk kirim __link tiktoknya__", True, reply_markup=InlineKeyboardMarkup(START_BUTTONS))
 
 # Downloader for tiktok
 @xbot.on_message(filters.regex(pattern='.*http.*') & filters.private)
